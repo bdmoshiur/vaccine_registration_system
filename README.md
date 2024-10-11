@@ -16,8 +16,8 @@ Ensure the following are installed on your machine:
 Clone the repository to your local machine and navigate into the project directory:
 
 ```bash
-git clone <your-repository-url>
-cd covid-vaccine-registration
+git clone <https://github.com/bdmoshiur/vaccine_registration_system.git>
+cd vaccine_registration_system
 ```
 
 ### Step 2: Configure Environment Variables
@@ -41,7 +41,7 @@ docker-compose up -d
 Access the application container to run necessary Laravel commands for setup:
 
 ```bash
-docker exec -it vaccine_registration_system_db_ms bash
+docker exec -it vaccine_registration_system_ms bash
 ```
 
 Inside the container, execute the following commands to install dependencies, generate the application key, and migrate the database:
