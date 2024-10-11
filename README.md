@@ -1,15 +1,11 @@
 # COVID Vaccine Registration System
 
 ## Description
-This is a COVID vaccine registration system built using Laravel. The system allows users to register for a vaccine, select a vaccine center, and receive their vaccination date based on a first-come, first-served basis. Users can also search for their vaccination status using their NID.
+This is a COVID vaccine registration system built using Laravel. The system allows users to register for a vaccine, select a vaccine center, and receive their vaccination date based on a first-come, first-served basis. Users can also search for their vaccination status using their NID (National ID).
 
-## Features
-- **User Registration**: Users can register with their NID, select a vaccine center, and get scheduled.
-- **Vaccine Centers**: Pre-populated vaccine centers with varying daily capacities.
-- **First-Come-First-Serve Scheduling**: Users are scheduled for vaccination based on availability and order of registration.
 
 ## Prerequisites
-Make sure the following are installed on your machine:
+Ensure the following are installed on your machine:
 - **Docker**: [Install Docker](https://docs.docker.com/get-docker/)
 - **Docker Compose**: [Install Docker Compose](https://docs.docker.com/compose/install/)
 - **Git**: [Install Git](https://git-scm.com/)
@@ -17,6 +13,7 @@ Make sure the following are installed on your machine:
 ## Installation and Setup
 
 ### Step 1: Clone the Repository
+Clone the repository to your local machine and navigate into the project directory:
 
 ```bash
 git clone <your-repository-url>
@@ -24,16 +21,16 @@ cd covid-vaccine-registration
 ```
 
 ### Step 2: Configure Environment Variables
-
-- Copy the `.env.example` file to `.env`:
+Copy the example environment file to create your own:
 
 ```bash
 cp .env.example .env
 ```
 
-### Step 3: Docker Setup
+Open the `.env` file in a text editor and configure the database and mail settings according to your environment.
 
-- Build and run the application with Docker Compose:
+### Step 3: Docker Setup
+Build and run the application using Docker Compose:
 
 ```bash
 docker-compose build
@@ -41,26 +38,31 @@ docker-compose up -d
 ```
 
 ### Step 4: Run Laravel Commands
-
-- Run the following commands inside the application container to install dependencies, migrate the database, and seed the vaccine centers:
+Access the application container to run necessary Laravel commands for setup:
 
 ```bash
 docker exec -it vaccine_registration_system_db_ms bash
+```
 
-# Inside the container, run:
+Inside the container, execute the following commands to install dependencies, generate the application key, and migrate the database:
+
+```bash
 composer install
 php artisan key:generate
 php artisan migrate:fresh --seed
 ```
 
 ### Step 5: Access the Application
-
-- Visit the application in your browser:
+Once the application is up and running, visit the following URL in your browser:
 
 ```
 http://localhost:7001
 ```
 
-## Endpoints
+## API Endpoints
 
-1. **Registration Page**: `/`
+1. **Registration Page**: 
+   - **URL**: `/`
+   - **Method**: GET
+   - **Description**: Displays the registration form for users.
+

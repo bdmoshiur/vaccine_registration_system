@@ -1,0 +1,59 @@
+version: "3.9"
+services:
+  vaccine_registration_system_app:
+    build:
+      args:
+        user: user
+        uid: 1000
+      context: ./
+      dockerfile: Dockerfile
+    image: vaccine_registration_system_app
+    container_name: ${CONTAINER_PREFIX}_ms
+    restart: unless-stopped
+    working_dir: /var/www/
+    volumes:
+      - ./:/var/www
+    depends_on:
+      - vaccine_registration_system_db
+    networks:
+      - vaccine_registration_systems
+
+  vaccine_registration_system_db:
+    image: mysql:8
+    container_name: ${CONTAINER_PREFIX}_db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - ./storage/dbdata:/var/exam/mysql
+    networks:
+      - vaccine_registration_systems
+
+  nginx:
+    image: nginx:alpine
+    container_name: ${CONTAINER_PREFIX}_nginx
+    restart: unless-stopped
+    ports:
+      - ${PROXY_PORT}:80
+    volumes:
+      - ./:/var/www
+      - ./docker-compose/nginx:/etc/nginx/conf.d/
+    networks:
+      - vaccine_registration_systems
+  mailpit:
+    image: mailpit/mailpit
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+    networks:
+      - vaccine_registration_systems
+  
+
+networks:
+  vaccine_registration_systems:
+    name: ${NETWORK_NAME}
+    driver: bridge
