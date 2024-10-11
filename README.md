@@ -59,7 +59,7 @@ Once the application is up and running, visit the following URL in your browser:
 http://localhost:7001
 ```
 
-## API Endpoints
+## Endpoints
 
 1. **Registration Page**: 
    - **URL**: `/`
