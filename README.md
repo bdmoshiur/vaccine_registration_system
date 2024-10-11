@@ -1,8 +1,7 @@
 # COVID Vaccine Registration System
 
 ## Description
-This is a COVID vaccine registration system built using Laravel. The system allows users to register for a vaccine, select a vaccine center, and receive their vaccination date based on a first-come, first-served basis. Users can also search for their vaccination status using their NID (National ID).
-
+This is a COVID vaccine registration system built using Laravel. The system allows users to register for a vaccine, select a vaccine center, and receive their vaccination date based on a first-come, first-served basis.
 
 ## Prerequisites
 Ensure the following are installed on your machine:
