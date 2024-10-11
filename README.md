@@ -16,7 +16,7 @@ Ensure the following are installed on your machine:
 Clone the repository to your local machine and navigate into the project directory:
 
 ```bash
-git clone <https://github.com/bdmoshiur/vaccine_registration_system.git>
+git clone https://github.com/bdmoshiur/vaccine_registration_system.git
 cd vaccine_registration_system
 ```
 
@@ -33,8 +33,8 @@ Open the `.env` file in a text editor and configure the database and mail settin
 Build and run the application using Docker Compose:
 
 ```bash
-docker-compose build
-docker-compose up -d
+docker compose build
+docker compose up -d
 ```
 
 ### Step 4: Run Laravel Commands
